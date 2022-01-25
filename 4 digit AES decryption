@@ -1,0 +1,23 @@
+#!/bin/bash
+for i in {0000..9999}
+do
+echo "Testing $i"
+  if openssl enc -aes-256-cbc -d -in ./encryptedFileName.txt -out ./decryptedFileName.d.txt -k $i -md md5 2>/dev/null; then
+    openssl enc -aes-256-cbc -d -in ./kryptert.dta -out ./decryptedFileName$i.d.txt -k $i -md md5 2>/dev/null
+
+    file -i ./decryptedFileName$i.d.txt > fileType$i.txt
+
+    if ! grep "iso" ./fileType$i.txt > /dev/null; then
+      rm ./decryptedFileName$i.d.txt
+      rm ./fileType$i.txt
+    elif grep "iso" ./fileType$i.txt > /dev/null; then
+      echo "Right Password: $i"
+      echo " "
+      echo "Text in file:"
+      echo " "
+      rm ./decryptedFileName.d.txt
+      cat ./decryptedFileName$i.d.txt
+      exit 0
+    fi
+  fi
+done
