@@ -1,0 +1,69 @@
+#! /bin/bash
+
+echo " "
+
+
+echo " "
+
+
+echo "M A G I C  "
+echo " "
+echo " "
+echo "       ╔═╗  ╔══╗ ╔══ ╔══     ▒     ▒      "
+echo "       ╠══╗ ║ ═╣ ╚═╗ ╠═      ▒     ▒  ▒   "
+echo "       ╚══╝ ║  ║ ══╝ ╚══     ▒ ▒▒  ▒▒▒▒      "
+echo "                             ▒▒  ▒    ▒    "
+echo "                              ▒▒▒     ▒     "
+
+
+
+echo " "
+echo " "
+echo "B A S E   6 4   E N C O D E R  &  D E C O D E R  "
+
+echo " "
+
+echo "Coded by UserHonest"
+
+echo " "
+#PromtStatement PS3 where i define a promt for a select loop
+#inside the shell script
+PS3='Please enter your choice: '
+options=("Encode" "Decode" "Quit")
+select opt in "${options[@]}"
+do
+        case $opt in
+
+                "Encode")
+                        echo " "
+                        echo "Encode text"
+                        echo " "
+                        read text
+                        etext=`echo -n $text | base64`
+                        echo " "
+                        echo " Encoded text is : $etext "
+                        ;;
+
+                "Decode")
+                        echo " "
+                        echo "Decode text"
+                        echo " "
+                        read text
+                        etext=`echo $text | base64 -d`
+                        echo " "
+                        echo "Decoded text is : $etext"
+                        ;;
+
+                "Quit")
+                        echo""
+                        echo " Bye! "
+                        break
+                        ;;
+
+                *) echo "Invalid option $REPLY";;
+        esac
+done
+
+exit 0
+
+
