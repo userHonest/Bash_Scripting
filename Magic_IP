@@ -1,0 +1,49 @@
+
+#!/bin/bash
+
+echo "M A G I C"
+echo ""
+echo "▒▒  ▒▒▒▒▒▒    "
+echo "▒▒  ▒▒   ▒    "
+echo "▒▒  ▒▒ ▒▒▒    "
+echo "▒▒  ▒▒        "
+echo "▒▒  ▒▒        "
+
+echo ""
+### Coded By UserHonest , Squirrel Group ####
+echo ""
+echo " Welcome to Magic IP"
+echo ""
+echo " This script will show you all the available Ip adresses connected to this network"
+echo " To acomplish this you need to put in the first 3 octates of your IP "
+echo ""
+
+##Input area
+echo "Enter first Oct of your IP address"
+read oct1
+echo ""
+echo "Enter the second Oct of your IP address"
+read oct2
+echo ""
+echo "Enter the third Oct of your IP adress"
+read oct3
+echo ""
+
+
+echo "Scanning"
+echo "" 
+# This script will ping every IP Available on the network.
+
+for ip in {1..254}
+do
+	ping -c 1 $oct1.$oct2.$oct3.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":" &
+
+
+done
+
+
+
+echo ""
+echo "Scann complete"
+
+exit 0
